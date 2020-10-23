@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from 'react-router-dom'
+
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
 import api from '../../services/api'
 
 export default function EditCar({ match }){
@@ -85,46 +94,77 @@ export default function EditCar({ match }){
     return(
 
         <div>
-            <Link className="button" to={`/`}>
-                Voltar
-            </Link>  
-            <form>
-                <input 
-                    type="text"
-                    placeholder="Placa"
-                    value={placa}
-                    onChange={e => setPlaca(e.target.value)}
-                />
-                <input 
-                    type="text"
-                    placeholder="Marca"
-                    value={marca}
-                    onChange={e => setMarca(e.target.value)}
-                />
-                <input 
-                    type="text"
-                    placeholder="Modelo"
-                    value={modelo}
-                    onChange={e => setModelo(e.target.value)}
-                />
-                <input 
-                    type="number"
-                    placeholder="Ano"
-                    value={ano}
-                    onChange={e => setAno(e.target.value)}
-                />
-                <input 
-                    type="text"
-                    placeholder="Cor"
-                    value={cor}
-                    onChange={e => setCor(e.target.value)}
-                />
 
-                <button onClick={handleSave} className="button" type="button">
-                    Salvar
-                </button>
+            <Container maxWidth="lg">
+                <Typography variant="h4" component="h4" gutterBottom>
+                    Cadastro
+                </Typography>
 
-            </form>
+                <Box component="div" m={1}>
+                    <Grid container direction="row" spacing={3} xs="6">
+                            <Grid item xs={6}>
+                                <TextField 
+                                    type="text"
+                                    placeholder="Placa"
+                                    value={placa}
+                                    onChange={e => setPlaca(e.target.value)}
+                                />                                
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField 
+                                    type="text"
+                                    placeholder="Marca"
+                                    value={marca}
+                                    onChange={e => setMarca(e.target.value)}
+                                />                                
+                            </Grid> 
+                            <Grid item xs={6}>
+                                <TextField 
+                                    type="text"
+                                    placeholder="Modelo"
+                                    value={modelo}
+                                    onChange={e => setModelo(e.target.value)}
+                                />
+                                
+                            </Grid>              
+                            <Grid item xs={6}>
+                                <TextField 
+                                    type="number"
+                                    placeholder="Ano"
+                                    value={ano}
+                                    onChange={e => setAno(e.target.value)}
+                                />                
+                                
+                            </Grid> 
+                            <Grid item xs={6}>
+                                <TextField 
+                                    type="text"
+                                    placeholder="Cor"
+                                    value={cor}
+                                    onChange={e => setCor(e.target.value)}
+                                />                                  
+                            </Grid>
+                    </Grid>
+                </Box>
+
+                <Box component="div" m={1}>
+                    <Grid container direction="row" spacing={1}>
+                        <Grid item>
+                            <Button variant="contained" color="primary" className="button" onClick={() => handleSave()}>
+                                Salvar
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" color="secondary" className="button" onClick={() => history.push(`/`)}>
+                                Voltar
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Box>
+
+                
+            </Container>
+            
         </div>
 
     )
