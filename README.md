@@ -12,6 +12,8 @@ Sistema CRUD desenvolvido em JavaScript
 - `npm install` para instalar as dependencias
 - `npm start` para iniciar o server
 
-![List page](./images/list_img.png "List Page")
+## List page
+![List page](./images/list_img.png "List page")
 
-![List page](./images/form_img.png "Form Page")
+## Form page
+![List page](./images/form_img.png "Form page")
