@@ -15,24 +15,26 @@ export default function EditCar({ match }){
     const [cor, setCor] = useState('');
 
     useEffect(() => {
-        api.get(`cars/${id}`).then(res => {
-            setPlaca(res.data[0].placa)
-            setMarca(res.data[0].marca)
-            setModelo(res.data[0].modelo)
-            setAno(res.data[0].ano)
-            setCor(res.data[0].cor)
-        }).catch((err) => {
-            if (err.response) {
-                alert(err.response.data.error)
-                console.log(err.response)
-            } else if (err.request) {
-                alert("Erro ao recuperar registro")
-                console.log(err.request)
-            } else {
-                alert("Erro ao recuperar registro")
-                console.log(err)
-            }
-        })
+        if (id != 0){
+            api.get(`cars/${id}`).then(res => {
+                setPlaca(res.data[0].placa)
+                setMarca(res.data[0].marca)
+                setModelo(res.data[0].modelo)
+                setAno(res.data[0].ano)
+                setCor(res.data[0].cor)
+            }).catch((err) => {
+                if (err.response) {
+                    alert(err.response.data.error)
+                    console.log(err.response)
+                } else if (err.request) {
+                    alert("Erro ao recuperar registro")
+                    console.log(err.request)
+                } else {
+                    alert("Erro ao recuperar registro")
+                    console.log(err)
+                }
+            })
+        }
     }, [])
 
     function handleSave(){
@@ -45,21 +47,39 @@ export default function EditCar({ match }){
             cor
         }
 
-        api.put(`cars/${id}`, data).then(() => {
-            alert("Registro alterado com sucesso")
-            history.push(`/cars/${id}`);
-        }).catch((err) => {
-            if (err.response) {
-                alert(err.response.data.error)
-                console.log(err.response)
-            } else if (err.request) {
-                alert("Erro ao alterar registro")
-                console.log(err.request)
-            } else {
-                alert("Erro ao alterar registro")
-                console.log(err)
-            }
-        })
+        if(id != 0 ){
+            api.put(`cars/${id}`, data).then(() => {
+                alert("Registro alterado com sucesso")
+                history.push(`/cars/${id}`);
+            }).catch((err) => {
+                if (err.response) {
+                    alert(err.response.data.error)
+                    console.log(err.response)
+                } else if (err.request) {
+                    alert("Erro ao alterar registro")
+                    console.log(err.request)
+                } else {
+                    alert("Erro ao alterar registro")
+                    console.log(err)
+                }
+            })
+        } else {
+            api.post(`cars`, data).then((res) => {
+                alert("Registro salvo com sucesso")
+                history.push(`/cars/${res.data.id}`);
+            }).catch((err) => {
+                if (err.response) {
+                    alert(err.response.data.error)
+                    console.log(err.response)
+                } else if (err.request) {
+                    alert("Erro ao salvar registro")
+                    console.log(err.request)
+                } else {
+                    alert("Erro ao salvar registro")
+                    console.log(err)
+                }
+            })
+        }
     }
 
     return(

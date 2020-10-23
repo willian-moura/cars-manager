@@ -19,7 +19,12 @@ export default function List(){
         })
     }
 
-    function handleDelete(id){         
+    function handleDelete(id){  
+        
+        if( !window.confirm("Deseja realmente excluir o registro?") ){
+            return
+        }
+
         api.delete(`cars/${id}`).then((res) =>{
             alert('Registro excluído com sucesso')
             loadCars()
@@ -41,10 +46,10 @@ export default function List(){
 
         <div>
             <header>
-                Cars Manager
+                <h1>Cars Manager</h1>
             </header>
-            <h1>Cars</h1>
-            <Link className="button" to={`/cars/new`}>
+            <h4>Lista de Carros</h4>
+            <Link className="button" to={`/cars/0`}>
                 Novo
             </Link> 
             <table>
