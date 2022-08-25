@@ -1,16 +1,18 @@
+🇧🇷 [Versão em português](./README.pt-br.md)
+
 # cars-manager
-Sistema CRUD desenvolvido em JavaScript
+A simple CRUD system developed in JavaScript.
 
-## backend
- - NodeJS
- - Use `npm install` para instalar as dependencias 
- - `npm start` para iniciar o server
+## back-end
+- NodeJS
+- Use `npm install` to install the dependencies
+- `npm start` to start the server
 
-## frontend
+## front-end
 - ReactJS
 - Material-UI
-- `npm install` para instalar as dependencias
-- `npm start` para iniciar o server
+- `npm install` to install the dependencies
+- `npm start` to start the server
 
 ## List page
 ![List page](./images/list_img.png "List page")
